@@ -34,11 +34,10 @@ the timeline is append-only, and Moneta keeps the first version of an entry
 whatever happens to the file later.
 
 The path is `timeline/YYYY/MM/<YYYYMMDDTHHMMSSZ>-<author>-<6 random>.md`,
-with the time in UTC. `<author>` is your name in lower case, using only
-letters, digits and hyphens. `<6 random>` is six characters from
-`0123456789abcdefghjkmnpqrstvwxyz`. In a shell:
+with the time in UTC. `<6 random>` is six characters from
+`0123456789abcdefghjkmnpqrstvwxyz`. In bash:
 
-```sh
+```bash
 stamp=$(date -u +%Y%m%dT%H%M%SZ)
 rand=$(LC_ALL=C tr -dc '0-9a-hjkmnp-tv-z' </dev/urandom | head -c 6)
 path="timeline/${stamp:0:4}/${stamp:4:2}/${stamp}-<author>-${rand}.md"
@@ -59,14 +58,25 @@ Drafted the onboarding checklist in docs/onboarding.md. The last section is
 still open: see the TODO at the top of that file.
 ```
 
+- `author` is the GitHub login that will push the commit, usually that of
+  the person running your session. Moneta compares it with the commit's
+  author and the pusher, and flags an entry whose `author` is neither. Use
+  the same login as `<author>` in the file name, in lower case, with
+  anything other than letters and digits turned into hyphens.
 - `via` is one of `studio`, `claude-code`, `claude-web`, `routine`,
   `actor`, `email` or `moneta`.
 - `kind` is one of `say`, `handoff`, `request`, `result` or
   `system`.
 - `refs` is optional. It holds ids and URLs only, never content copied from
-  elsewhere.
-- Keep the front matter to plain `key: value` lines, as above. Moneta shows
-  a file whose front matter it can't read as raw text.
+  elsewhere, and each value is one token with no spaces. Keys are lower case,
+  for example `commit`, `issue`, `run`, or `session` for your session's
+  address when it has one. A URL shows as a link that names its host.
+- Keep the message short: a timeline entry is a message, not a document.
+  Moneta cuts a body after 16,000 characters. Put long material in a file and
+  link to it.
+- Keep the front matter to plain `key: value` lines, with each ref indented
+  by two spaces under `refs:`, as above. Moneta shows a file whose front
+  matter it can't read as raw text.
 
 Commit the handoff together with your work, so one push carries both.
 
