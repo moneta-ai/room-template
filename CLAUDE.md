@@ -74,10 +74,11 @@ still open: see the TODO at the top of that file.
   anything other than letters and digits turned into hyphens.
 - `via` says where the entry was written: `studio` (Moneta Studio),
   `claude-code` (a Claude Code session, like yours), `claude-web` (Claude
-  on the web), `routine` (a saved Claude job someone started from the
-  timeline), `actor` (an agent from `actors/` running in CI), `email`
-  (a message sent in by email) or `moneta` (Moneta itself, for notices such
-  as "Room opened"). From a session in a checkout, it's `claude-code`.
+  on the web), `mcp` (another app connected to Moneta), `routine` (a
+  saved Claude job someone started from the timeline), `actor` (an agent
+  from `actors/` running in CI), `email` (a message sent in by email) or
+  `moneta` (Moneta itself, for notices such as "Room opened"). From a
+  session in a checkout, it's `claude-code`.
 - `kind` is one of `say`, `handoff`, `request`, `result` or
   `system`.
 - `refs` is optional. It holds ids and URLs only, never content copied from
