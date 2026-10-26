@@ -1,7 +1,6 @@
 {
   "version": 1,
-  "roomId": null,
-  "apps": [],
+  "rooms": {},
   "env": null,
   "dashboardUrl": null
 }
